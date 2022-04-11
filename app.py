@@ -7,7 +7,7 @@ token = "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"
 g = Github(token)
 
 
-@app.route("/webhook", methods=["POST"])
+@app.route("/", methods=["POST"])
 def webhook():
     data = request.get_json()
     if data["action"] == "created":
