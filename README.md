@@ -47,6 +47,7 @@ These are the languages, frameworks and technologies used with this project
 * [Flask Web Framewwork](https://flask.palletsprojects.com/en/2.1.x/)
 * [Ngrok](https://ngrok.com/)
 * [PyGithub (Python wrapper for Github REST API)](https://pygithub.readthedocs.io/)
+* [Docker](https://docker.com)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -72,7 +73,9 @@ This will run the solution locally.
   2. Install Ngrok
   3. Get the ngrok token from the dashboard
   ```
-### Installation
+* Docker or Docker Desktop
+
+### Installation without Docker
 First, you need to lauch the Flask Webserver:
 1. Clone the repo
    ```sh
@@ -93,6 +96,29 @@ First, you need to lauch the Flask Webserver:
 5. Run Ngrok on another terminal:
    ```sh
    ngrok http 80
+   ```
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+### Installation using Docker
+1. Clone the repo
+   ```sh
+   git clone https://github.com/GithubArchitectSecTeam/proposal.git
+   ```
+2. Build the Docker image:
+   ```sh
+   docker build -t webhook_api_img .
+   ```
+3. Run a container instance (ports 5000-5099 can be used:
+   ```sh
+   docker run -dit --name webhook_api -p 5000:5000 webhook_api_img
+   ```
+4. Check keepalive:
+   ```sh
+   curl -v http://localhost:5000/keepalive
+   ```
+5. Run Ngrok on another terminal:
+   ```sh
+   ngrok http 5000
    ```
 <p align="right">(<a href="#top">back to top</a>)</p>
 
