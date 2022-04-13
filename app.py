@@ -3,8 +3,14 @@ from github import Github
 import yaml
 
 app = Flask(__name__)
-token = "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"
+
+token = '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'
 g = Github(token)
+
+
+@app.route("/keepalive")
+def keepalive():
+    return "KEEPALIVE_OK"
 
 
 @app.route("/", methods=["POST"])
